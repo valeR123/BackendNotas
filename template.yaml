@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Resources:
+  BackendNotasFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs14.x
+      CodeUri: .
+      MemorySize: 128
+      Timeout: 10
+      Role: arn:aws:lambda:us-east-2:891377247137:function:BackendNotas
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /backendnotas
+            Method: get
